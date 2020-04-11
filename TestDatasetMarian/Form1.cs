@@ -17,10 +17,15 @@ namespace TestDatasetMarian
         {
             InitializeComponent();
             ElementePredefinite();
-            //DataSet abc= ClasaDS.metodaGenereazaDataSet();
-            ClasaDS.metodaGenereazaDataSet();
-            //int bbb = abc.Tables.Count;
-            //ClasaDS.StructuraColoane(ClasaDS.metodaGenereazaDataSet().Tables["tabelLucru"]);
+            ClasaDS abc= new ClasaDS();
+            abc.getSetFrom("select * from vMTbA", "VerificareTest1");
+            DataTable tabela = abc.Tables["VerificareTest1"];
+            tabela.Rows.Add(0, "asociatie", "corcodusTest2");
+            tabela.Rows.Add(0, "asociatie", "corcodusTest3");
+            abc.Actualizare("VerificareTest1");
+            //ClasaDS.metodaGenereazaDataSet();
+            int bbb = abc.Tables.Count;
+            //ClasaDS.StructuraColoane(ClasaDS.metodaGenereazaDataSet().Tables["vMTbA"]);
         }
         DataSet valoriPredefiniteAsociatie;
         DsTest1TableAdapters.vMTbATableAdapter TA = new DsTest1TableAdapters.vMTbATableAdapter();
@@ -107,21 +112,6 @@ namespace TestDatasetMarian
             return valoriPredefiniteAsociatie;
 
         }
-        //public static int Inserare(DataTable tabelLucru)
-        //{
-        //   // DataRow[] nemodificate = ClasaDS.metodaGenereazaDataSet().Tables["tabelLucru"].Select(null, null, DataViewRowState.Unchanged);
-        //    DataRow[] adaugate = ClasaDS.metodaGenereazaDataSet().Tables["tabelLucru"].Select(null, null, DataViewRowState.Added);
-        //    //DataRow[] sterse = ClasaDS.metodaGenereazaDataSet().Tables["tabelLucru"].Select(null, null, DataViewRowState.Deleted);
-        //    //DataRow[] modificate = ClasaDS.metodaGenereazaDataSet().Tables["tabelLucru"].Select(null, null, DataViewRowState.ModifiedCurrent);
-        //    if (adaugate.Length > 0) 
-        //    //foreach (DataRow r in adaugate)
-        //    //{
-        //    //    string inserare = "insert into tabelLucru" + "(" + ClasaDS.StructuraColoane(tabelLucru) + ")" + "values";
-
-        //    //    string values = ""
-        //    //}
-            
-        //    return adaugate.Length;
-        //}
+       
     }
 }

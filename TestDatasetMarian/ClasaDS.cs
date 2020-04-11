@@ -8,21 +8,26 @@ using System.Threading.Tasks;
 
 namespace TestDatasetMarian
 {
-    public static class ClasaDS 
+    public  class ClasaDS :DataSet
     {
-        //private static object toataBD;
+        //primire instructiune sql  - si daca returneaza valoare - sa adauge o tabela cu denumirea pe care o folosim
+        // trimiterea instructiunii
+        public void getSetFrom (String sSQL, String sNumeTabel)
+        {
+            string sirConectare = @"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro";
+            SqlConnection connection = new SqlConnection(sirConectare);
+            connection.Open();
 
-        //public static object GetToataBD()
-        //{
-        //    return toataBD;
-        //}
+            SqlCommand command = new SqlCommand(sSQL, connection);
+            DataTable tabelLucru = new DataTable(sNumeTabel);
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = command;
+            da.Fill(tabelLucru);
+            this.Tables.Add(tabelLucru);
+            
 
-        //private static void SetToataBD(object value)
-        //{
-        //    toataBD = value;
-        //}
-
-        public static DataSet metodaGenereazaDataSet()
+        }
+        public  DataSet metodaGenereazaDataSet()
         {
             DataSet ToataBD= new DataSet() ;
             string sirConectare = @"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro";
@@ -56,19 +61,80 @@ namespace TestDatasetMarian
                        
         }
 
-        public static DataColumnCollection StructuraColoane( DataTable tabelLucru)
+        public  DataColumnCollection StructuraColoane(string sTabelLucru)
         {
-            DataColumnCollection coloane = tabelLucru.Columns;
-            // List < DataColumn > Tabele2 = view_DocDataSet.Tables[0].Columns.Cast<DataColumn>().ToList();
-            foreach (DataColumn column in coloane)
-            {
-                ///////
-            }
-
+            DataColumnCollection coloane = this.Tables[sTabelLucru].Columns;            
             return coloane ;
         }
+        public  int Actualizare(string sTabelLucru)
+        {
+            
+            DataRow[] adaugate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Added);
+            DataRow[] sterse = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Deleted);
+            DataRow[] modificate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.ModifiedCurrent);
+            DataColumnCollection dc = this.StructuraColoane(sTabelLucru);
+            string inserare = "insert into "+ sTabelLucru+ " (" ;
+            for (int i=0; i<dc.Count;i++)
+            {
+                if (i == 0)
+                {
+                    inserare = inserare + dc[i].ColumnName;
+                }
+                else
+                {
+                    inserare = inserare +","+ dc[i].ColumnName;
+                }
+            }
+            inserare = inserare + " ) values ";
 
-        
+            for (int k=0; k<adaugate.Length;k++)
+                {
+                DataRow r = adaugate[k];
+                string linie = "";
+                foreach (DataColumn f in dc)
+                {
+                   string tip= f.DataType.ToString();
+                    string valoare = "";
+                    switch (f.DataType.ToString())
+
+                    {
+                        case "System.String":
+                            valoare = "'" + r[f.ColumnName].ToString() + "'";
+                            break;
+                        case "System.Int32":
+                            valoare =r[f.ColumnName].ToString();
+                            break;
+
+
+                        default:
+                            break;
+                    }
+                    if (string.IsNullOrEmpty(linie))
+                    {
+                        linie = linie + valoare;
+                    }
+                    else
+                    {
+                        linie = linie + "," + valoare;
+                    }
+                   
+                }
+                if (k == 0)
+                {
+                    inserare = inserare + " (" + linie + " )";
+                }
+                else
+                {
+                    inserare = inserare + " ,(" + linie + " )";
+                }
+                
+                }
+
+
+            return adaugate.Length;
+        }
+
+
 
     }
 
