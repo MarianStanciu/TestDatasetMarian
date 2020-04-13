@@ -13,16 +13,17 @@ namespace TestDatasetMarian
 {
     public partial class Form1 : Form
     {
+        ClasaDS abc = new ClasaDS();
         public Form1()
         {
             InitializeComponent();
             ElementePredefinite();
-            ClasaDS abc= new ClasaDS();
+            
             abc.getSetFrom("select * from vMTbA", "VerificareTest1");
             DataTable tabela = abc.Tables["VerificareTest1"];
             tabela.Rows.Add(0, "asociatie", "corcodusTest2");
             tabela.Rows.Add(0, "asociatie", "corcodusTest3");
-            abc.Actualizare("VerificareTest1");
+            abc.Inserare("VerificareTest1");
             //ClasaDS.metodaGenereazaDataSet();
             int bbb = abc.Tables.Count;
             //ClasaDS.StructuraColoane(ClasaDS.metodaGenereazaDataSet().Tables["vMTbA"]);
@@ -112,6 +113,11 @@ namespace TestDatasetMarian
             return valoriPredefiniteAsociatie;
 
         }
-       
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
+            abc.Actualizare("VerificareTest1");
+        }
     }
 }

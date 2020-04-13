@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valoareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vMTbABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsTest1 = new TestDatasetMarian.DsTest1();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -42,9 +45,7 @@
             this.vMTbATableAdapter = new TestDatasetMarian.DsTest1TableAdapters.vMTbATableAdapter();
             this.button4 = new System.Windows.Forms.Button();
             this.dsTest1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.valoareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vMTbABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTest1)).BeginInit();
@@ -75,6 +76,30 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(512, 333);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "denumire";
+            this.dataGridViewTextBoxColumn2.HeaderText = "denumire";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // valoareDataGridViewTextBoxColumn
+            // 
+            this.valoareDataGridViewTextBoxColumn.DataPropertyName = "valoare";
+            this.valoareDataGridViewTextBoxColumn.HeaderText = "valoare";
+            this.valoareDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.valoareDataGridViewTextBoxColumn.Name = "valoareDataGridViewTextBoxColumn";
+            this.valoareDataGridViewTextBoxColumn.Width = 125;
             // 
             // vMTbABindingSource
             // 
@@ -157,35 +182,22 @@
             this.dsTest1BindingSource.DataSource = this.dsTest1;
             this.dsTest1BindingSource.Position = 0;
             // 
-            // valoareDataGridViewTextBoxColumn
+            // button5
             // 
-            this.valoareDataGridViewTextBoxColumn.DataPropertyName = "valoare";
-            this.valoareDataGridViewTextBoxColumn.HeaderText = "valoare";
-            this.valoareDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.valoareDataGridViewTextBoxColumn.Name = "valoareDataGridViewTextBoxColumn";
-            this.valoareDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "denumire";
-            this.dataGridViewTextBoxColumn2.HeaderText = "denumire";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "id";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 125;
+            this.button5.Location = new System.Drawing.Point(75, 24);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(161, 44);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -226,6 +238,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource dsTest1BindingSource;
+        private System.Windows.Forms.Button button5;
     }
 }
 
