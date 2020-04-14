@@ -48,6 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="abc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>abc.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ClasaDS.cs" />
     <Compile Include="DsTest1.cs">
       <DependentUpon>DsTest1.xsd</DependentUpon>
@@ -77,6 +82,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="abc.xsc">
+      <DependentUpon>abc.xsd</DependentUpon>
+    </None>
+    <None Include="abc.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>abc.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="abc.xss">
+      <DependentUpon>abc.xsd</DependentUpon>
+    </None>
     <None Include="DsTest1.xsc">
       <DependentUpon>DsTest1.xsd</DependentUpon>
     </None>
@@ -88,6 +104,7 @@
     <None Include="DsTest1.xss">
       <DependentUpon>DsTest1.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\ClasaDS.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

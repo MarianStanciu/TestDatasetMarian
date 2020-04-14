@@ -133,10 +133,14 @@ namespace TestDatasetMarian
         //metoda pentru actalizare
         public int Actualizare(string sTabelLucru)
         {
+            DataRow[] adaugate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Added);
             DataRow[] modificate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.ModifiedCurrent);
+            DataRow[] sterse = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Deleted);
             DataColumnCollection dc = this.StructuraColoane(sTabelLucru);
             string actualizare = "Update  " + sTabelLucru+ " set ";
             // update + tabel + set numecoloana=valoare, numecoloana=valoare, ....
+            //DataRow custRow = custTable.Rows[0];
+            //string custID = custRow["CustomerID", DataRowVersion.Original].ToString();
             for (int i = 0; i < dc.Count; i++)
             {
                 actualizare = actualizare+  dc[i].ColumnName + "=";
@@ -182,7 +186,41 @@ namespace TestDatasetMarian
                 //actualizare = actualizare +actualizare;
             }
             return modificate.Length;
-        }     
+        }
+        public int Actualizare2(string sTabelLucru)
+        {
+            DataRow[] modificate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.ModifiedCurrent);
+            DataColumnCollection dc = this.StructuraColoane(sTabelLucru);
+            string actualizare = "Update  " + sTabelLucru + " set ";
+            string valoare = "";
+
+            // update + tabel + set numecoloana=valoare, numecoloana=valoare, ....
+            for (int i = 0; i < dc.Count; i++)
+            {
+                //for (int k = 0; k < modificate.Length; k++)
+                //{
+
+                    if (i == 0)
+                    {
+                        actualizare = actualizare + dc[i].ColumnName;
+                    }
+                    if (i % 2 != 0)
+                    {
+                        actualizare = actualizare + "," + dc[i].ColumnName;
+                    }
+                    else
+                    {
+                        actualizare = actualizare + "=" + "valoare";
+                    }
+                    //actualizare = actualizare + ",";
+                //}
+
+                //actualizare = actualizare + dc[i].ColumnName + "=";
+
+
+            }
+            return modificate.Length;
+        }
 
         ///
 

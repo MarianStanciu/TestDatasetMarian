@@ -21,24 +21,29 @@ namespace TestDatasetMarian
             
             abc.getSetFrom("select * from vMTbA", "VerificareTest1");
             DataTable tabela = abc.Tables["VerificareTest1"];
-            tabela.Rows.Add(0, "asociatie", "corcodusTest2");
-            tabela.Rows.Add(0, "asociatie", "corcodusTest3");
-            abc.Inserare("VerificareTest1");
+            //tabela.Rows.Add(0, "asociatie", "corcodusTest2");
+            //tabela.Rows.Add(0, "asociatie", "corcodusTest3");
+            //abc.Inserare("VerificareTest1");
+          
             //ClasaDS.metodaGenereazaDataSet();
             int bbb = abc.Tables.Count;
             //ClasaDS.StructuraColoane(ClasaDS.metodaGenereazaDataSet().Tables["vMTbA"]);
         }
         DataSet valoriPredefiniteAsociatie;
+      
         DsTest1TableAdapters.vMTbATableAdapter TA = new DsTest1TableAdapters.vMTbATableAdapter();
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'abc1.vMTbA' table. You can move, or remove it, as needed.
+            this.vMTbATableAdapter1.Fill(this.abc1.vMTbA);
             // TODO: This line of code loads data into the 'dsTest1.vMTbA' table. You can move, or remove it, as needed.
+
             this.vMTbATableAdapter.Fill(this.dsTest1.vMTbA);
 
             //dataGridView1.DataSource = TA.GetData();
             //dataGridView1.DataSource = this.dsTest1.vMTbA;
-            dataGridView1.DataSource = this.dsTest1.vMTbA;
+            dataGridView1.DataSource = this.abc.Tables["VerificareTest1"];
             int ww = this.dsTest1.Tables[0].Rows.Count;
         }
 
@@ -114,10 +119,12 @@ namespace TestDatasetMarian
 
         }
 
+
         private void button5_Click(object sender, EventArgs e)
         {
             
-            abc.Actualizare("VerificareTest1");
+            abc.Actualizare2("VerificareTest1");
+          abc.Inserare("VerificareTest1");
         }
     }
 }

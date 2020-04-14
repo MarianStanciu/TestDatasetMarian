@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valoareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vMTbABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsTest1 = new TestDatasetMarian.DsTest1();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -46,10 +42,19 @@
             this.button4 = new System.Windows.Forms.Button();
             this.dsTest1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button5 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.valoareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.abc1 = new TestDatasetMarian.abc();
+            this.vMTbABindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.vMTbATableAdapter1 = new TestDatasetMarian.abcTableAdapters.vMTbATableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.vMTbABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTest1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTest1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abc1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vMTbABindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -61,45 +66,6 @@
             this.button1.Text = "inserare";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.valoareDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.vMTbABindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(276, 95);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(512, 333);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "id";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "denumire";
-            this.dataGridViewTextBoxColumn2.HeaderText = "denumire";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // valoareDataGridViewTextBoxColumn
-            // 
-            this.valoareDataGridViewTextBoxColumn.DataPropertyName = "valoare";
-            this.valoareDataGridViewTextBoxColumn.HeaderText = "valoare";
-            this.valoareDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.valoareDataGridViewTextBoxColumn.Name = "valoareDataGridViewTextBoxColumn";
-            this.valoareDataGridViewTextBoxColumn.Width = 125;
             // 
             // vMTbABindingSource
             // 
@@ -192,6 +158,59 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // valoareDataGridViewTextBoxColumn
+            // 
+            this.valoareDataGridViewTextBoxColumn.DataPropertyName = "valoare";
+            this.valoareDataGridViewTextBoxColumn.HeaderText = "valoare";
+            this.valoareDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.valoareDataGridViewTextBoxColumn.Name = "valoareDataGridViewTextBoxColumn";
+            this.valoareDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "denumire";
+            this.dataGridViewTextBoxColumn2.HeaderText = "denumire";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.valoareDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.vMTbABindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(276, 95);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(512, 333);
+            this.dataGridView1.TabIndex = 3;
+            // 
+            // abc1
+            // 
+            this.abc1.DataSetName = "abc";
+            this.abc1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vMTbABindingSource1
+            // 
+            this.vMTbABindingSource1.DataMember = "vMTbA";
+            this.vMTbABindingSource1.DataSource = this.abc1;
+            // 
+            // vMTbATableAdapter1
+            // 
+            this.vMTbATableAdapter1.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -210,10 +229,12 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vMTbABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTest1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTest1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abc1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vMTbABindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,7 +245,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn denumireDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
@@ -234,11 +254,15 @@
         private System.Windows.Forms.BindingSource vMTbABindingSource;
         private DsTest1TableAdapters.vMTbATableAdapter vMTbATableAdapter;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource dsTest1BindingSource;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private abc abc1;
+        private System.Windows.Forms.BindingSource vMTbABindingSource1;
+        private abcTableAdapters.vMTbATableAdapter vMTbATableAdapter1;
     }
 }
 
