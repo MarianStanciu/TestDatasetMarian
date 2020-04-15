@@ -130,7 +130,7 @@ namespace TestDatasetMarian
             return adaugate.Length;
         }
 
-        //metoda pentru actalizare
+        //metoda pentru actalizare  marian
         public int Actualizare(string sTabelLucru)
         {
             DataRow[] adaugate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Added);
@@ -138,9 +138,7 @@ namespace TestDatasetMarian
             DataRow[] sterse = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Deleted);
             DataColumnCollection dc = this.StructuraColoane(sTabelLucru);
             string actualizare = "Update  " + sTabelLucru+ " set ";
-            // update + tabel + set numecoloana=valoare, numecoloana=valoare, ....
-            //DataRow custRow = custTable.Rows[0];
-            //string custID = custRow["CustomerID", DataRowVersion.Original].ToString();
+           
             for (int i = 0; i < dc.Count; i++)
             {
                 actualizare = actualizare+  dc[i].ColumnName + "=";
@@ -148,8 +146,9 @@ namespace TestDatasetMarian
                 {
                     DataRow r = modificate[k];
                     string linie = "";
-                    foreach (DataColumn f in dc)
-                    {
+                    //foreach (DataColumn f in dc)
+                    //{
+                    DataColumn f = dc[i];
                         string tip = f.DataType.ToString();
                         string valoare = "";
                         switch (f.DataType.ToString())
@@ -174,19 +173,21 @@ namespace TestDatasetMarian
                         }
                         if (k == 0)
                         {
-                            actualizare = actualizare + " (" + linie + " )";
+                          
+                            actualizare = actualizare  + linie +" ," ;
                         }
                         else
                         {
-                            actualizare = actualizare + " ,(" + linie + " )";
+                           actualizare = actualizare + " ," + linie  ;
                         }
-                    }
+                    //}
                 }
 
                 //actualizare = actualizare +actualizare;
             }
             return modificate.Length;
         }
+        //metoda actualizare adrian
         public int Actualizare2(string sTabelLucru)
         {
             DataRow[] modificate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.ModifiedCurrent);
@@ -197,12 +198,13 @@ namespace TestDatasetMarian
             // update + tabel + set numecoloana=valoare, numecoloana=valoare, ....
             for (int i = 0; i < dc.Count; i++)
             {
-                //for (int k = 0; k < modificate.Length; k++)
-                //{
+                for (int k = 0; k < modificate.Length; k++)
+                {
 
                     if (i == 0)
                     {
                         actualizare = actualizare + dc[i].ColumnName;
+                        //valoare = sTabelLucru.ro[modificate[k][i]];
                     }
                     if (i % 2 != 0)
                     {
@@ -213,7 +215,7 @@ namespace TestDatasetMarian
                         actualizare = actualizare + "=" + "valoare";
                     }
                     //actualizare = actualizare + ",";
-                //}
+                }
 
                 //actualizare = actualizare + dc[i].ColumnName + "=";
 

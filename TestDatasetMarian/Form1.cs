@@ -123,7 +123,7 @@ namespace TestDatasetMarian
         private void button5_Click(object sender, EventArgs e)
         {
             
-            abc.Actualizare2("VerificareTest1");
+            abc.Actualizare("VerificareTest1");
           abc.Inserare("VerificareTest1");
         }
     }
