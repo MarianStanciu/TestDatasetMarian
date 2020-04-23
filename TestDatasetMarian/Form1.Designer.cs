@@ -29,43 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
             this.vMTbABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsTest1 = new TestDatasetMarian.DsTest1();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.vMTbATableAdapter = new TestDatasetMarian.DsTest1TableAdapters.vMTbATableAdapter();
-            this.button4 = new System.Windows.Forms.Button();
             this.dsTest1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.valoareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.abc1 = new TestDatasetMarian.abc();
             this.vMTbABindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.abc1 = new TestDatasetMarian.abc();
             this.vMTbATableAdapter1 = new TestDatasetMarian.abcTableAdapters.vMTbATableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.vMTbABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTest1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTest1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abc1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vMTbABindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abc1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(75, 248);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 31);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "inserare";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // vMTbABindingSource
             // 
@@ -109,39 +95,9 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Valoare";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(78, 295);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 31);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "actualizare grid";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(78, 348);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(161, 31);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "update";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // vMTbATableAdapter
             // 
             this.vMTbATableAdapter.ClearBeforeFill = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(75, 397);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(161, 31);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "actualizare grid";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // dsTest1BindingSource
             // 
@@ -150,7 +106,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(75, 24);
+            this.button5.Location = new System.Drawing.Point(75, 250);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(161, 44);
             this.button5.TabIndex = 10;
@@ -197,15 +153,15 @@
             this.dataGridView1.Size = new System.Drawing.Size(512, 333);
             this.dataGridView1.TabIndex = 3;
             // 
-            // abc1
-            // 
-            this.abc1.DataSetName = "abc";
-            this.abc1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // vMTbABindingSource1
             // 
             this.vMTbABindingSource1.DataMember = "vMTbA";
             this.vMTbABindingSource1.DataSource = this.abc1;
+            // 
+            // abc1
+            // 
+            this.abc1.DataSetName = "abc";
+            this.abc1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // vMTbATableAdapter1
             // 
@@ -217,15 +173,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -233,8 +185,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsTest1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsTest1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abc1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vMTbABindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abc1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,16 +196,12 @@
         private DsTest1 dsTest1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn denumireDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.BindingSource vMTbABindingSource;
         private DsTest1TableAdapters.vMTbATableAdapter vMTbATableAdapter;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.BindingSource dsTest1BindingSource;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn;

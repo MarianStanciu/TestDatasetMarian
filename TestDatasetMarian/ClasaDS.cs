@@ -133,59 +133,87 @@ namespace TestDatasetMarian
         //metoda pentru actalizare  marian
         public int Actualizare(string sTabelLucru)
         {
-            DataRow[] adaugate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Added);
             DataRow[] modificate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.ModifiedCurrent);
-            DataRow[] sterse = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Deleted);
             DataColumnCollection dc = this.StructuraColoane(sTabelLucru);
-            string actualizare = "Update  " + sTabelLucru+ " set ";
-           
-            for (int i = 0; i < dc.Count; i++)
+
+            string actualizare = "Update  " + sTabelLucru + " set ";
+            for (int k = 0; k < modificate.Length; k++)
             {
-                actualizare = actualizare+  dc[i].ColumnName + "=";
-                for (int k = 0; k < modificate.Length; k++)
+                for (int i = 1; i < dc.Count; i++)
                 {
-                    DataRow r = modificate[k];
+                    actualizare = actualizare + dc[i].ColumnName + "=";
+                    DataRow r = (DataRow)modificate[k];
                     string linie = "";
                     //foreach (DataColumn f in dc)
                     //{
                     DataColumn f = dc[i];
-                        string tip = f.DataType.ToString();
-                        string valoare = "";
-                        switch (f.DataType.ToString())
+                    string tip = f.DataType.ToString();
+                    string valoare = "";
+                    switch (f.DataType.ToString())
+                    {
+                        case "System.String":
+                            valoare = "'" + r[f.ColumnName].ToString() + "'";
+                            break;
+                        case "System.Int32":
+                            valoare = r[f.ColumnName].ToString();
+                            break;
+                        default:
+                            break;
+                    }
+                    if (string.IsNullOrEmpty(linie))
+                    {
+                        linie = linie + valoare;
+                    }
+                    else
+                    {
+                        linie = linie + "," + valoare;
+                    }
+                    if (i < dc.Count - 1)
+                    {
 
-                        {
-                            case "System.String":
-                                valoare = "'" + r[f.ColumnName].ToString() + "'";
-                                break;
-                            case "System.Int32":
-                                valoare = r[f.ColumnName].ToString();
-                                break;
-                            default:
-                                break;
-                        }
-                        if (string.IsNullOrEmpty(linie))
-                        {
-                            linie = linie + valoare;
-                        }
-                        else
-                        {
-                            linie = linie + "," + valoare;
-                        }
-                        if (k == 0)
-                        {
-                          
-                            actualizare = actualizare  + linie +" ," ;
-                        }
-                        else
-                        {
-                           actualizare = actualizare + " ," + linie  ;
-                        }
-                    //}
+                        actualizare = actualizare + linie + " ,";
+                    }
+                    if (i == dc.Count - 1)
+                    {
+                        actualizare = actualizare + linie;
+                    }
                 }
-
-                //actualizare = actualizare +actualizare;
+                actualizare = actualizare + " where id=" + modificate[k][dc[0].ColumnName].ToString();
+                if (k < modificate.Length - 1)
+                {
+                    actualizare = actualizare + " Update  " + sTabelLucru + " set ";
+                }
             }
             return modificate.Length;
+        }
+
+        public int Stergere(string sTabelLucru)
+        {
+            DataRow[] sterse = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Deleted);
+            DataColumnCollection dc = this.StructuraColoane(sTabelLucru);
+            string stergere = " delete  from " + sTabelLucru + " where ";
+            
+                for (int k = 0; k < sterse.Length; k++)
+                {
+                    DataRow r = sterse[k];
+                    
+                DataColumn f = dc[0];
+                string valoare = r[0, DataRowVersion.Original].ToString();
+                stergere = stergere + dc[0].ColumnName + "=" + valoare;
+                if (k < sterse.Length-1)
+                {
+                    stergere = stergere + " delete  from " + sTabelLucru + " where ";
+                }
+            }
+            
+            string sirConectare = @"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro";
+            SqlConnection con = new SqlConnection(sirConectare);
+            SqlCommand command = new SqlCommand(stergere, con);
+            con.Open();
+            command.ExecuteNonQuery();
+            
+            return sterse.Length;
+            
         }
         //metoda actualizare adrian
         public int Actualizare2(string sTabelLucru)
